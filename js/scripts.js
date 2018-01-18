@@ -4,8 +4,8 @@
     $('html').removeClass('no-js');
 
     // Detect device for whatsapp href
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-        $('.wsp').attr("href",'tel:+543434522996');
+    if (!( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))) {
+        $('.wsp').attr("href",'#');
     }
 
     // Animate to section when nav is clicked

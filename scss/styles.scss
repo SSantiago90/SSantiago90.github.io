@@ -1,3 +1,4 @@
+
 /*!
     Title: Dev Portfolio Template
     Version: 1.2.1
@@ -33,9 +34,12 @@
     ------------------------
 */
 
+/* ------- Blue Layout ------- */
+
 // Define base and accent colors
-$base-color: #6d59cf; 
-$base-color-hover: darken($base-color, 45%);
+$base-color: #175676; 
+$base-color-hover: darken($base-color, 35%);
+$base-color-alt-light: #4ba3c3;
 
 // Define background colors
 $background: #131120;
@@ -46,7 +50,33 @@ $border: #dcd9d9;
 
 // Define text colors
 $heading: #374054;
-$text: #74808a;
+$text: #759eb8;
+$text-light: lighten($base-color,45%);
+
+
+/* ------- Green layout ------- 
+// Define base and accent colors
+//$base-color: #6d59cf;
+$base-color: #20b37f;
+$base-color-hover: darken($base-color, 35%);
+$base-color-alt-light: lighten($base-color,15%);
+
+// Define text colors
+$heading: #093c2a;
+$text: #2db68f;
+$text-alt: #1e9095;
+$text-accent: #01cb91;
+//$text: #74808a;
+$text-light: lighten($base-color,35%);
+
+// Define background colors
+$background: #051c1a;
+$background-alt: #f2f2f5;
+
+// Define border colors
+$border: #dcd9d9;
+*/
+
 
 /*
     ---------------------
@@ -168,7 +198,7 @@ header {
     animation-duration: 0.75s;
 
     ul {
-        opacity:0.5;
+        opacity:0.7;
         display: block;
         position: fixed;
         width:100%;
@@ -193,7 +223,7 @@ header {
 
     a {
         display: block;
-        color: lighten($base-color, 15%);
+        color: $base-color-alt-light;
         padding: 10px;
 
         &:hover {
@@ -283,12 +313,12 @@ footer {
         width: 35px;
         height: 35px;
         border-radius: 50%;
-        border: 3px solid lighten($text, 25%);
+        border: 3px solid $base-color-alt-light;
         text-align:center;
     }
 
     i {
-        color: $text;
+        color: $base-color-alt-light;
     }
 }
 
@@ -310,8 +340,9 @@ footer {
         display: block;
         color: $text;
         padding: 10px;
+        @include transition(0.2s);
 
-        &:hover {
+        &:hover {            
             color: $base-color;
         }
     }
@@ -380,6 +411,27 @@ h3.heading {
     background: $background-alt;
 }
 
+.no-style{
+    color: $text !important;
+    text-decoration: none;  
+}
+
+a {
+    color: $base-color;    
+
+    &:focus{
+        color: $base-color-alt-light;
+    }
+}
+
+#to-top,#lead-down span{
+    opacity:0.7;
+    @include transition(0.2s);
+    
+    &:hover{
+        opacity:1;
+    }
+}
 /*
     --------------------------
     ----- 4. Lead Styles -----
@@ -406,7 +458,7 @@ h3.heading {
     text-align: center;
 
     h1, h2 {
-        margin: 0;
+        //margin: 0;
     }
 
     h1 {
@@ -419,7 +471,7 @@ h3.heading {
     }
 
     h2 {
-        color: lighten($base-color, 25%);
+        color: $base-color-alt-light;
         font-weight: 500;
         font-size: 2.25em;
         margin-bottom: 15px;
@@ -455,7 +507,7 @@ h3.heading {
         width: 35px;
         height: 35px;
         border-radius: 50%;
-        border: 3px solid lighten($base-color, 10%);
+        border: 3px solid $base-color-alt-light;
         text-align:center;
     }
 
@@ -470,7 +522,7 @@ h3.heading {
     position:relative;
     margin-top: 50px;
     z-index: 10;    
-    color: lighten($base-color, 15%);
+    color: $base-color-alt-light;
 
     span {
         cursor: pointer;
@@ -479,7 +531,7 @@ h3.heading {
         width: 35px;
         height: 35px;
         border-radius: 50%;
-        border: 3px solid lighten($base-color, 10%);
+        border: 3px solid  $base-color-alt-light;
         text-align:center;
     }
 
@@ -682,11 +734,11 @@ h3.heading {
         color: $text;
         clear: both;
         font-weight: 500;
-        margin: 0 0 15px 0;
+        margin: 5px 0 10px;
     }
 
     p, ul {
-        margin: 0;
+        margin: 0 0 25px;
         color: $text;
         font-size: 0.9em;
     }
@@ -755,6 +807,7 @@ h3.heading {
         list-style: none;
         font-size: small;
         color: #aaa;
+        padding-left: 0px;
 
         li {            
            display: inline-block;
@@ -800,6 +853,7 @@ h3.heading {
        // display: block;
         margin: 0 auto;
         padding: 0;
+        font-size: 0.9em;
     }
 
     li {
@@ -823,6 +877,11 @@ h3.heading {
     .heading{
         margin: 20px 0 10px;
     }
+
+    .row{
+        max-width:1080px;
+        margin: 0 auto;
+    }
 }
 
 .skill-icon{
@@ -834,7 +893,7 @@ h3.heading {
     width: 75px;
     height: 75px;
     border-radius: 50%;
-    border: 3px solid lighten($base-color, 10%);
+    border: 3px solid $base-color-alt-light;
     text-align:center;
 }
 /*
@@ -952,209 +1011,68 @@ h3.heading {
         padding: 0 0 0 15px;
     }
 }
-
 /*
     -----------------------------
-    ----- 12. Media Queries -----
+    ---- 13. Individual Project Styles 
     -----------------------------
 */
 
-// Collapse timeline
-@media only screen and (max-width: 750px) {
-
-    #experience-timeline {
-        &:before, &:after {
-            left: 23px;
-        }
-
-    }
-
-    .vtimeline-date {
-        width: auto;
-        text-align: left;
-        position: relative;
-        margin-bottom: 15px;
-        display: block;
-        margin-left: 70px;
-    }
-
-    .vtimeline-icon {
-        margin-left: 0;
-    }
-
-    .vtimeline-content {
-        margin-left: 70px;
-    }
-
-}
-
-//Large Devices ONLY
-
-@media only screen and (mix-width : 980px) {   
-    .gallery{
-        margin: 20px 10px;
-        padding:10px 80px;
-    }
-}
-
-// Medium Devices
-@media only screen and (max-width : 992px) {
-
-    #lead {
-        height: auto;
-        min-height: auto;
-        max-height: auto;
-        padding: 100px 15px;
-    }
-
-    #lead-content {
-        position: relative;
-        transform: none;
-        left: auto;
-        top: auto;
-
-        h1 {
-            font-size: 3em;
-        }
-
-        h2 {
-            font-size: 1.75em;
-        }
-    }
-
-    #about {
-        text-align: center;
-    }
-
-    .education-block {
-        h3, span {
-            float: none;
-        }
-    }
-
-}
-
-// Small Devices
-@media only screen and (max-width : 768px) {
-
-
-
-    header {
-        position: fixed;
-        display: none;
-        z-index: 999;
-        animation: none;
-        bottom: 0;
-        height: 100%;
-    }
-
-    #mobile-menu-open, #mobile-menu-close {
-        display: block;
-    }
-
-    #menu {
-        height: 100%;
-        overflow-y: auto;
-        box-shadow: none;
-        border-radius: 0;
-        width: 100%;
-        display: block;
-        padding: auto;
-
-        li {
-            display: block;
-            margin-bottom: 9vh;
-        }
-    }
-
-    #lead-content {
-        h1 {
-            font-size: 2.8em;
-        }
-
-        h2 {
-            font-size: 1.8em;
-        }
-
-        a {
-            padding: 10px 20px;
-        }
-    }
-
-    #lead-down {
-        //display: none;
-    }    
-
-    .project-image {
-        display: none;
-    }
-
-    .project-info {
-        position: relative;
-        margin: 0;
-        padding: 30px 15px;
-        top: auto;
-        transform: none;
-    }
-
-    footer {
-        text-align: center;
-    }
-
-    .social {
-        text-align: center;
-    }
-
-}
-
-// Extra Small Devices
-@media only screen and (max-width : 480px) {
-
-    #lead-content {
-        h1 {
-            font-size: 2.2em;
-        }
-
-        h2 {
-            font-size: 1.5em;
-        }
-
-        a {
-            font-size: 0.9em;
-            padding: 5px 10px;
-        }
-    }
-
-}
-
-
-// *-------------------------
-// Individual Project Styles 
-// *-------------------------
-
-#lead.proy-dhinox {
+#lead.proyect {
+    color: $text-light;
     position: relative;
-    height: 50vh;
+    height: 70vh;
     min-height: 320px;
     background: url(../images/proyectos/dhinox/banner.jpg);
     background-size: cover;
     padding: 15px;
     overflow: hidden;
+
+    ul{
+        text-align:left;
+        list-style: none;
+        padding:0px;
+
+        span{
+            float:right;
+        }
+    }
+
+    p{
+        width:100%;
+    }
+
+    a{
+        color: darken($text-light,10%);
+    }
+
+
 }
-#lead-content.proy-dhinox {
-    position: absolute;
-    z-index: 10;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+
+.back{
+    position:fixed;
+    top:15px;
+    left:15px;
+    z-index: 99;
+    cursor:pointer;
+    border-radius: 15px;
+    color: $text-light;
+    background: $base-color-hover;
+    border: 0px;
+    font-size:0.8em;
+    opacity: 0.8;
+    padding:8px 20px;
+    @include transition(0.3s);
+
+    &:hover{
+        opacity: 1;
+        color: #eee;
+    }
 }
 
 // Gallery styles
 
-.gallery{    
-    margin: 20px 10px;
-    padding:10px 10px;
+#gallery{
+    margin: 15px 5%;
 }
 
 .img-item:hover{
@@ -1163,8 +1081,13 @@ h3.heading {
 
 }
 
-.modal-dialog .big{
-    max-width:70vw !important;
+.modal-dialog .modal-img{
+    text-align: center;
+    width:75vw;
+    max-width: 1080px;
+    padding: 0px;
+    margin: 0 auto;
+
 }
 
 .modal-content>button[type=button].close{
@@ -1186,21 +1109,34 @@ h3.heading {
         width:100%;
     }
 }
+
 //hover snippet
-.snip1577 {
+
+.img-cont{
+    padding: 0px;
+    margin:0px;
+}
+
+.img-margin-fix{
+}
+
+.snip1577 {    
+  width:33.33%;
   position: relative;
   display: inline-block;
   overflow: hidden;
-  margin: 8px;
-  min-width: 230px;
-  //max-width: 315px;
+  //margin: 8px;
+  min-width: 260px;
   width: 100%;
   color: #fff;
   text-align: left;
   font-size: 16px;
-  background: $base-color-hover;
+  background: $base-color-hover;  
 }
 
+.snip1577.big{
+    width:66.66%;
+}
 .snip1577 *,
 .snip1577:before,
 .snip1577:after {
@@ -1311,3 +1247,197 @@ h3.heading {
   -webkit-transition-delay: 0.35s;
   transition-delay: 0.35s;
 }
+
+
+/*
+    -----------------------------
+    ----- 13. Media Queries -----
+    -----------------------------
+*/
+
+// Collapse timeline
+@media only screen and (max-width: 750px) {
+
+    #experience-timeline {
+        &:before, &:after {
+            left: 23px;
+        }
+
+    }
+
+    .vtimeline-date {
+        width: auto;
+        text-align: left;
+        position: relative;
+        margin-bottom: 15px;
+        display: block;
+        margin-left: 70px;
+    }
+
+    .vtimeline-icon {
+        margin-left: 0;
+    }
+
+    .vtimeline-content {
+        margin-left: 70px;
+    }
+
+}
+
+//Large Devices ONLY
+
+@media only screen and (mix-width : 980px) {   
+    .gallery{
+        margin: 20px 10px;
+        padding:10px 80px;
+    }
+}
+
+// Medium Devices
+@media only screen and (max-width : 992px) {
+
+    #lead {
+        height: auto;
+        min-height: auto;
+        max-height: auto;
+        padding: 100px 15px;
+    }
+
+    #lead-content {
+        position: relative;
+        transform: none;
+        left: auto;
+        top: auto;
+
+        h1 {
+            font-size: 3em;
+        }
+
+        h2 {
+            font-size: 1.75em;
+        }
+    }
+
+    #about {
+        text-align: center;
+    }
+
+    .education-block {
+        h3, span {
+            float: none;
+        }
+    }
+
+     #lead.proyect {        
+        height: 52vh;
+    }
+
+}
+
+// Small Devices
+@media only screen and (max-width : 768px) {
+
+
+
+    header {
+        position: fixed;
+        display: none;
+        z-index: 999;
+        animation: none;
+        bottom: 0;
+        height: 100%;
+
+        ul{
+            opacity: 1;
+        }
+    }
+
+    #mobile-menu-open, #mobile-menu-close {
+        display: block;
+    }
+
+    #menu {
+        height: 100%;
+        overflow-y: auto;
+        box-shadow: none;
+        border-radius: 0;
+        width: 100%;
+        display: block;
+        padding: auto;
+
+        li {
+            display: block;
+            margin-bottom: 9vh;
+        }
+    }
+
+    #lead-content .proyect{
+        h1 {
+            font-size: 2.8em;
+        }
+
+        h2 {
+            font-size: 1.8em;
+        }
+
+        a {
+            padding: 10px 0px;
+        }
+    }
+
+    #lead-down {
+        //display: none;
+    }    
+
+    .project-image {
+        display: none;
+    }
+
+    .project-info {
+        position: relative;
+        margin: 0;
+        padding: 30px 15px;
+        top: auto;
+        transform: none;
+    }
+
+    footer {
+        text-align: center;
+    }
+
+    .social {
+        text-align: center;
+    }
+
+}
+
+// Extra Small Devices
+@media only screen and (max-width : 480px) {
+
+    #lead-content {
+        h1 {
+            font-size: 2.2em;
+        }
+
+        h2 {
+            font-size: 1.5em;
+        }
+
+        a {
+            font-size: 0.9em;
+            padding: 0px;
+        }
+    }
+
+
+    #lead.proyect {        
+        height: 60vh;
+    }
+
+    .proyect-desc{
+        font-size: 0.85em;
+    }
+
+
+}
+
