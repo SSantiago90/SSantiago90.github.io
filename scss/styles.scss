@@ -249,6 +249,13 @@ header {
     }
 }
 
+.parallax-bg{
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 #menu {
     &.active {
         display: block;
@@ -443,10 +450,17 @@ a {
     height: 100vh;
     min-height: 500px;
     max-height: 1080px;
-    background: url(../images/lead-bg.jpg);
+    background-image: url(../images/lead-bg.jpg);
     background-size: cover;
     padding: 15px;
     overflow: hidden;
+
+    .parallax-bg{
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
 }
 
 #lead-content {
@@ -755,7 +769,7 @@ a {
 */
 
 #projects {
-    padding: 50px 15px;
+    padding: 50px 15px 20px 15px;
     border-bottom: 1px solid $border;
     text-align: center;
 
@@ -834,14 +848,14 @@ a {
     display: none;
 }
 
-/*
+/*f
     -------------------------------
     ----- 9. Skills Styles -----
     -------------------------------
 */
 
 #skills {
-    padding: 50px 15px;
+    padding: 50px 15px 70px 15px;
     text-align: center;
 
     h2 {
@@ -875,7 +889,7 @@ a {
     }
 
     .heading{
-        margin: 20px 0 10px;
+        margin: 0px 0 10px;
     }
 
     .row{
@@ -1021,8 +1035,9 @@ a {
     color: $text-light;
     position: relative;
     height: 70vh;
-    min-height: 320px;
-    background: url(../images/proyectos/dhinox/banner.jpg);
+    min-height: 320px;    
+    //background: url(../images/proyectos/dhinox/banner.jpg); //dhinox banner
+    background-image: url(../images/lead-bg.jpg); //default banner
     background-size: cover;
     padding: 15px;
     overflow: hidden;
@@ -1084,7 +1099,7 @@ a {
 .modal-dialog .modal-img{
     text-align: center;
     width:75vw;
-    max-width: 1080px;
+    max-width: 768px;
     padding: 0px;
     margin: 0 auto;
 
@@ -1115,6 +1130,31 @@ a {
 .img-cont{
     padding: 0px;
     margin:0px;
+
+    //workaround for weird "invisible margin" below images
+     &:after{
+          content:'';
+          display:inline-block;  
+          position:absolute;
+          height:100%;
+          width:3px;
+          background: white;  
+          right:0px;
+          top:0px;
+          z-index: 50;
+    }
+
+    &:before{
+          content:'';
+          display:inline-block;  
+          position:absolute;
+          height:100%;
+          width:3px;
+          background: white;  
+          left:0;
+          top:0;
+          z-index: 50;
+    }
 }
 
 .img-margin-fix{
@@ -1131,7 +1171,7 @@ a {
   color: #fff;
   text-align: left;
   font-size: 16px;
-  background: $base-color-hover;  
+  background: $base-color;  
 }
 
 .snip1577.big{
@@ -1367,7 +1407,11 @@ a {
 
         li {
             display: block;
-            margin-bottom: 9vh;
+            margin-bottom: 4vh;
+
+            a{
+                padding:3vh;
+            }
         }
     }
 
@@ -1389,6 +1433,11 @@ a {
         //display: none;
     }    
 
+
+    .parallax {
+        background-attachment: scroll;
+    }
+
     .project-image {
         display: none;
     }
@@ -1408,6 +1457,12 @@ a {
     .social {
         text-align: center;
     }
+
+     #lead.proyect {        
+        height: 70vh;
+    }
+
+
 
 }
 
@@ -1431,7 +1486,7 @@ a {
 
 
     #lead.proyect {        
-        height: 60vh;
+        height: 90vh;
     }
 
     .proyect-desc{

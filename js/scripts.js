@@ -4,8 +4,10 @@
     $('html').removeClass('no-js');
 
     // Detect device for whatsapp href
-    if (!( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))) {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) === false){
         $('.wsp').attr("href",'#');
+        $('.wsp').attr("data-toggle",'modal');
+        $('.wsp').attr("data-target",'#exampleModal');
     }
 
     // Animate to section when nav is clicked
@@ -89,15 +91,19 @@
 
     // Popup Modal
     $(".js-pop").on("click", function() {
-        var imgsrc = $(this).find('img').attr('src')
+      
+        var imgsrc = $(this).find('img').attr('src');
+        var img_ext = imgsrc.slice(imgsrc.length-4,imgsrc.length);
+        var img_hd = imgsrc.replace(/(_mini.png)|(_mini.jpg)/i, img_ext);
         if ($(this).hasClass('big')){
            // here asign the image to the modal when the user click the enlarge link
-           $('#imagepreview').attr('src', imgsrc); 
+         
+           $('#imagepreview').attr('src', img_hd); 
            // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
            $('#imagemodal').modal('show'); 
        }
        else{
-           $('#imagepreviewbig').attr('src', imgsrc); 
+           $('#imagepreviewbig').attr('src', img_hd); 
            // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
            $('#imagemodalbig').modal('show'); 
        }
